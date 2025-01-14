@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:menu_item/config/constants/colors_repo.dart';
 import 'package:menu_item/config/constants/padding.dart';
+import 'package:menu_item/screens/item_details.dart';
 import 'package:menu_item/widgets/menu_page/image_carousel.dart';
 
 import '../helpers/default_page_container.dart';
@@ -69,7 +70,15 @@ class MenuScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return MenuItem();
+                    return InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ItemDetailsScreen(),
+                            ),
+                          );
+                        },
+                        child: MenuItem());
                   },
                   itemCount: 12,
                   separatorBuilder: (context, index) => SizedBox(

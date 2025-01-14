@@ -1,8 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:menu_item/config/constants/padding.dart';
 import 'package:menu_item/helpers/dumy_data.dart';
+import 'package:shimmer/shimmer.dart';
 
 class MenuImageCarousel extends StatefulWidget {
   const MenuImageCarousel({super.key});
@@ -31,9 +34,18 @@ class _MenuImageCarouselState extends State<MenuImageCarousel> {
                 width: 390.w,
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(10.0.r)),
-                  child: Image.network(
-                    item,
+                  child: CachedNetworkImage(
+                    imageUrl: item,
                     fit: BoxFit.cover,
+                    placeholder: (context, url) {
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          color: Colors.white,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ))

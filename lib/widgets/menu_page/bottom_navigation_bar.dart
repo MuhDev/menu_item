@@ -25,19 +25,8 @@ class MenuBottomNavigationBar extends StatelessWidget {
               ),
             ),
             child: TabBar(
+              isScrollable: true,
               indicatorPadding: EdgeInsets.symmetric(horizontal: 6.w),
-              indicator: const UnderlineTabIndicator(
-                borderSide:
-                    BorderSide(width: 2.0, color: ColorRepo.primeryColor),
-                insets: EdgeInsets.fromLTRB(
-                    0, 0, 0, 40), // Moves the indicator above the label
-              ),
-              labelStyle: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                  color: ColorRepo.primeryColor),
-              indicatorColor: ColorRepo.primeryColor,
-              isScrollable: true, // Enables scrolling for the tabs
               tabs: const [
                 Tab(text: 'Ramadan deals'),
                 Tab(text: 'Main dishes'),
